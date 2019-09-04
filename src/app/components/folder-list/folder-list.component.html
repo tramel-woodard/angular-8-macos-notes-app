@@ -1,3 +1,11 @@
 <div class="folder-list-container">
-    
+    <ul>
+        <li>iCloud</li>
+        <li *ngFor="let user of users; let i = index;"
+            (click)="clickFolder(user.id)">{{user.name}}</li>
+    </ul>
+    <ul>
+        <li>On My Mac</li>
+        <li></li>
+    </ul>
 </div>
