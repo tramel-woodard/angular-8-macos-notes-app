@@ -9,11 +9,11 @@ import { environment} from '../../environments/environment';
 export class UserService {
 
   constructor(
-      private http: HttpClient
+      private _http: HttpClient
   ) { }
 
   getUsers() {
     const usersUrl: string = environment.API_ADDRESS + '/users';
-    return this.http.get(usersUrl);
+    return this._http.get(usersUrl);
   }
 }

@@ -7,6 +7,12 @@ body {
     border-radius: 10px;
     overflow: hidden;
 }
+.content-frame > .row div:nth-child(-n+2) {
+    padding-right: 0px;
+}
+.content-frame > .row div:nth-child(n+2) {
+    padding-left: 0px;
+}
 .header-frame {
     background-color: #e7e6e7;
     border-bottom: 1px solid #d4d5d5;

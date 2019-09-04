@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { UserService } from '../../services/user.service';
+import { NoteService } from '../../services/note.service';
 
-import { User } from '../../models/user.module';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-folder-list',
@@ -14,7 +15,8 @@ export class FolderListComponent implements OnInit {
   users: User[];
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private noteService: NoteService
   ) { }
 
   ngOnInit() {
@@ -25,12 +27,10 @@ export class FolderListComponent implements OnInit {
     this.userService.getUsers()
       .subscribe((users: User[]) => {
         this.users = users;
-        console.log('users', this.users);
       });
   }
 
-  clickFolder(id) {
-    console.log('Folder clicked: user = ' + id);
+  clickFolder(id: number) {
+    this.noteService.setId(id);
   }
-
 }
