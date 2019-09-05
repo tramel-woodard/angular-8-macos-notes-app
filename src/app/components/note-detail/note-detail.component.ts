@@ -34,11 +34,12 @@ export class NoteDetailComponent implements OnInit {
     error => {
       console.log(error);
     });
+    
     this.folderSubscription = this.noteService.getFolderId().subscribe(folderId => {
       if (this.activeFolderId !== folderId) {
         this.clearNoteValues();
       }
-    })
+    });
   }
 
   ngOnInit() {}
@@ -47,5 +48,4 @@ export class NoteDetailComponent implements OnInit {
     this.activeFolderId = null;
     this.noteIsFormatted = false;
   }
-
 }

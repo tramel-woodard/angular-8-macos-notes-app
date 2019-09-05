@@ -24,6 +24,7 @@ ul li:nth-child(n+2) {
     color: #11131f;
     padding-left: 30px;
 }
-ul .active {
-    
+ul .activeFolder {
+    background-color: #308bfa;
+    color: #ffffff !important;
 }

@@ -29,17 +29,40 @@ export class FolderListComponent implements OnInit {
     this.folderService.getFolders()
       .subscribe((folders: Folder[]) => {
         this.folders = folders;
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        this.populateFolderItemsWithClasses();
       });
   }
 
   clickFolder(folderId: number) {
+    this.checkActiveFolder(this.activeFolderId, folderId);
     this.activeFolderId = folderId;
     this.noteService.setFolderId(folderId);
+  }
+
+  checkActiveFolder(oldFolderId: number, newFolderId: number) {
+    if (oldFolderId && (oldFolderId !== newFolderId)) {
+      let oldFolder = document.getElementsByClassName('folder-' + oldFolderId)[0];
+      oldFolder.classList.remove('activeFolder');
+    }
+    let newFolder = document.getElementsByClassName('folder-' + newFolderId)[0];
+    newFolder.classList.add('activeFolder');
   }
 
   checkActiveNote(folderId: number) {
     if (this.activeFolderId !== folderId) {
       this.noteService.clearNote();
     }
+  }
+
+  populateFolderItemsWithClasses() {
+    let folderItems: HTMLCollectionOf<Element> = document.getElementsByClassName('folder-item');
+    this.folders.map((folder, i) => {
+      let className: string = 'folder-' + folder.id;
+    });
   }
 }
