@@ -10,7 +10,7 @@ import { NotesListComponent } from './components/notes-list/notes-list.component
 import { NoteDetailComponent } from './components/note-detail/note-detail.component';
 import { NoteHeaderComponent } from './components/note-header/note-header.component';
 
-import { UserService } from './services/user.service';
+import { FolderService } from './services/folder.service';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent },
@@ -34,7 +34,7 @@ const appRoutes: Routes = [
     HttpClientModule
   ],
   providers: [
-    UserService
+    FolderService
   ],
   bootstrap: [AppComponent]
 })

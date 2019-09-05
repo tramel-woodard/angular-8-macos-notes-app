@@ -1,6 +1,6 @@
-<ul class="notes-list-container" *ngIf="notes">
+<ul class="notes-list-container" *ngIf="noteIsFormatted">
     <li *ngFor="let note of notes">
-        {{note.title}}<br />
-        {{completed}}
+        <span>{{note.noteTitle}}</span><br />
+        <span>{{note.noteDescription}}</span>
     </li>
 </ul>

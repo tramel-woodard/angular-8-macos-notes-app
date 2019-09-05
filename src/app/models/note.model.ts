@@ -3,4 +3,6 @@ export class Note {
     id: number;
     title: string;
     body: string;
+    noteTitle?: string;
+    noteDescription?: string;
 }

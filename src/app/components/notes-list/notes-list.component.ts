@@ -14,20 +14,26 @@ export class NotesListComponent implements OnInit {
 
   notes: Note[] = [];
   subscription: Subscription;
+  noteIsFormatted: boolean = false;
+  noteIsActive: boolean = false;
 
   constructor(
     private noteService: NoteService
   ) {
     this.subscription = this.noteService.getId().subscribe(id => {
       if (id) {
-        console.log('has id');
         this.noteService.getNotes(id)
           .subscribe((notes: Note[]) => {
             this.notes = notes;
-            console.log('this.notes', this.notes);
+            this.renderNotes(this.notes);
+          },
+          error => {
+            console.log(error.message);
+          },
+          () => {
+            this.noteIsFormatted = true;
           });
       } else {
-        console.log('there was no id passed, and no notes');
         this.notes = [];
       }
     })
@@ -35,6 +41,17 @@ export class NotesListComponent implements OnInit {
 
   ngOnInit() {
     
+  }
+
+  clickNote(id: number) {
+
+  }
+
+  renderNotes(notes: Note[]) {
+    for (let i = 0; i < notes.length; i++) {
+      notes[i].noteTitle = notes[i].body.substring(0, 25);
+      notes[i].noteDescription = notes[i].body.substr(25, 38);
+    }
   }
 
 }

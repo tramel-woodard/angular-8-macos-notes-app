@@ -1,9 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
-import { UserService } from '../../services/user.service';
+import { FolderService } from '../../services/folder.service';
 import { NoteService } from '../../services/note.service';
 
-import { User } from '../../models/user.model';
+import { Folder } from '../../models/folder.model';
 
 @Component({
   selector: 'app-folder-list',
@@ -12,21 +12,21 @@ import { User } from '../../models/user.model';
 })
 export class FolderListComponent implements OnInit {
 
-  users: User[];
+  folders: Folder[];
 
   constructor(
-    private userService: UserService,
+    private folderService: FolderService,
     private noteService: NoteService
   ) { }
 
   ngOnInit() {
-    this.getUsers();
+    this.getFolders();
   }
 
-  getUsers() {
-    this.userService.getUsers()
-      .subscribe((users: User[]) => {
-        this.users = users;
+  getFolders() {
+    this.folderService.getFolders()
+      .subscribe((folders: Folder[]) => {
+        this.folders = folders;
       });
   }
 

@@ -9,3 +9,7 @@ ul {
 ul li {
     padding: 25px;
 }
+ul li span:nth-child(1) {
+    font-size: 20px;
+    font-weight: bold;
+}
