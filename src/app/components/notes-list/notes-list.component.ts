@@ -21,7 +21,7 @@ export class NotesListComponent implements OnInit {
   constructor(
     private noteService: NoteService
   ) {
-    this.subscription = this.noteService.getId().subscribe(id => {
+    this.subscription = this.noteService.getFolderId().subscribe(id => {
       if (id) {
         this.noteService.getNotes(id)
           .subscribe((notes: Note[]) => {

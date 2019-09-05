@@ -31,6 +31,6 @@ export class FolderListComponent implements OnInit {
   }
 
   clickFolder(id: number) {
-    this.noteService.setId(id);
+    this.noteService.setFolderId(id);
   }
 }

@@ -18,7 +18,7 @@ export class NoteService {
     private _http: HttpClient
   ) { }
 
-  clearId() {
+  clearFolderId() {
     this._id.next();
   }
 
@@ -26,7 +26,7 @@ export class NoteService {
     this._note.next();
   }
 
-  getId(): Observable<number> {
+  getFolderId(): Observable<number> {
     return this._id.asObservable();
   }
 
@@ -51,7 +51,7 @@ export class NoteService {
     }
   }
 
-  setId(id: number) {
+  setFolderId(id: number) {
     this._id.next(id);
   }
 

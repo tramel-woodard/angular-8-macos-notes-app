@@ -7,8 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-eight-macos-notes-app';
-
-  getNotes(event) {
-    console.log('$event', event);
-  }
 }
