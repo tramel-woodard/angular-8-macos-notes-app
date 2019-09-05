@@ -1,3 +1,4 @@
-<div *ngIf="users">
-    <h3>Note has been detected</h3>
+<div class="note-detail-frame" *ngIf="noteIsFormatted">
+    <h4>{{ note.noteTitle }}</h4>
+    <p>{{ note.noteDescription }}</p>
 </div>

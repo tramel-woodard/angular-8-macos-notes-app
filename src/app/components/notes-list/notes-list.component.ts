@@ -16,6 +16,7 @@ export class NotesListComponent implements OnInit {
   subscription: Subscription;
   noteIsFormatted: boolean = false;
   noteIsActive: boolean = false;
+  activeNote: Note;
 
   constructor(
     private noteService: NoteService
@@ -28,7 +29,7 @@ export class NotesListComponent implements OnInit {
             this.renderNotes(this.notes);
           },
           error => {
-            console.log(error.message);
+            console.log(error);
           },
           () => {
             this.noteIsFormatted = true;
@@ -43,15 +44,16 @@ export class NotesListComponent implements OnInit {
     
   }
 
-  clickNote(id: number) {
+  activateNote(id: number) {
 
+  }
+
+  clickNote(note: Note) {
+    console.log('note', note);
+    this.noteService.setNote(note);
   }
 
   renderNotes(notes: Note[]) {
-    for (let i = 0; i < notes.length; i++) {
-      notes[i].noteTitle = notes[i].body.substring(0, 25);
-      notes[i].noteDescription = notes[i].body.substr(25, 38);
-    }
+    this.noteService.renderNotes(notes);
   }
-
 }
