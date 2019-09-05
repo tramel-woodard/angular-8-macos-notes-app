@@ -44,10 +44,6 @@ export class NotesListComponent implements OnInit {
     
   }
 
-  activateNote(id: number) {
-
-  }
-
   clickNote(note: Note) {
     this.noteService.setNote(note);
   }

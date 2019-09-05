@@ -12,7 +12,7 @@ ul {
 ul li {
     padding: 13px;
 }
-ul li:hover {
+ul li:nth-child(n+2):hover {
     cursor: pointer;
 }
 ul li:nth-child(1) {

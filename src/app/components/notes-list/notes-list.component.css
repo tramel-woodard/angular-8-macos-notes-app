@@ -13,3 +13,9 @@ ul li span:nth-child(1) {
     font-size: 20px;
     font-weight: bold;
 }
+ul li {
+    border-bottom: 1px solid #e3e3e3;
+}
+ul li:nth-last-child(1) {
+    border-bottom: none;
+}
