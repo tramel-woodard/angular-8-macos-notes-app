@@ -49,7 +49,6 @@ export class NotesListComponent implements OnInit {
   }
 
   clickNote(note: Note) {
-    console.log('note', note);
     this.noteService.setNote(note);
   }
 

@@ -13,26 +13,39 @@ import { Note } from '../../models/note.model';
 export class NoteDetailComponent implements OnInit {
 
   note: Note;
-  subscription: Subscription;
+  activeFolderId: number;
+  noteSubscription: Subscription;
+  folderSubscription: Subscription;
   noteIsFormatted: boolean = false;
 
   constructor(
     private noteService: NoteService
   ) {
-    this.subscription = this.noteService.getNote().subscribe(note => {
+    this.noteSubscription = this.noteService.getNote().subscribe(note => {
       if (note) {
+        this.activeFolderId = note.userId;
         this.note = note;
         this.noteIsFormatted = true;
       } else {
-        this.note = null;
+        this.clearNoteValues();
         this.noteIsFormatted = false;
       }
     },
     error => {
       console.log(error);
     });
+    this.folderSubscription = this.noteService.getFolderId().subscribe(folderId => {
+      if (this.activeFolderId !== folderId) {
+        this.clearNoteValues();
+      }
+    })
   }
 
   ngOnInit() {}
+
+  clearNoteValues() {
+    this.activeFolderId = null;
+    this.noteIsFormatted = false;
+  }
 
 }

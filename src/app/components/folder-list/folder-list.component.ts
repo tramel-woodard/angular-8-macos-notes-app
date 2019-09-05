@@ -13,6 +13,7 @@ import { Folder } from '../../models/folder.model';
 export class FolderListComponent implements OnInit {
 
   folders: Folder[];
+  activeFolderId: number;
 
   constructor(
     private folderService: FolderService,
@@ -24,13 +25,21 @@ export class FolderListComponent implements OnInit {
   }
 
   getFolders() {
+    this.checkActiveNote(this.activeFolderId);
     this.folderService.getFolders()
       .subscribe((folders: Folder[]) => {
         this.folders = folders;
       });
   }
 
-  clickFolder(id: number) {
-    this.noteService.setFolderId(id);
+  clickFolder(folderId: number) {
+    this.activeFolderId = folderId;
+    this.noteService.setFolderId(folderId);
+  }
+
+  checkActiveNote(folderId: number) {
+    if (this.activeFolderId !== folderId) {
+      this.noteService.clearNote();
+    }
   }
 }
