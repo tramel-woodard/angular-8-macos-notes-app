@@ -24,6 +24,6 @@ ul li:nth-child(n+2) {
     color: #11131f;
     padding-left: 30px;
 }
-ul .isClicked {
+ul .active {
     
 }

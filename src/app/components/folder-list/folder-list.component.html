@@ -1,7 +1,7 @@
 <div class="folder-list-container">
     <ul>
         <li>iCloud</li>
-        <li *ngFor="let folder of folders; let i = index;"
+        <li class="folder-item" *ngFor="let folder of folders; let i = index;"
             (click)="clickFolder(folder.id)">{{folder.name}}</li>
     </ul>
     <ul>

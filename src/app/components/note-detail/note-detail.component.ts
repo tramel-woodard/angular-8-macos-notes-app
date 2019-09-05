@@ -20,7 +20,6 @@ export class NoteDetailComponent implements OnInit {
     private noteService: NoteService
   ) {
     this.subscription = this.noteService.getNote().subscribe(note => {
-      console.log('note returned from note-detail subscription', note);
       if (note) {
         this.note = note;
         this.noteIsFormatted = true;
