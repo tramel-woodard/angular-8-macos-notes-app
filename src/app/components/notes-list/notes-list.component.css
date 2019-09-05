@@ -6,16 +6,23 @@ ul {
     list-style-type: none;
     padding-left: 0px;
 }
-ul li {
-    padding: 25px;
-}
 ul li span:nth-child(1) {
     font-size: 20px;
     font-weight: bold;
 }
-ul li {
+.notes-list-item {
+    padding-left: 25px;
+}
+.notes-list-item:hover {
+    cursor: pointer;
+}
+.notes-list-item .note-frame {
+    padding: 25px 25px 25px 0px;
     border-bottom: 1px solid #e3e3e3;
 }
-ul li:nth-last-child(1) {
+.notes-list-item:nth-last-child(1) .note-frame {
     border-bottom: none;
+}
+ul .activeNote {
+    background-color: #fceeb5;
 }

@@ -17,6 +17,7 @@ export class NotesListComponent implements OnInit {
   noteIsFormatted: boolean = false;
   noteIsActive: boolean = false;
   activeNote: Note;
+  activeNoteId: number;
 
   constructor(
     private noteService: NoteService
@@ -44,8 +45,26 @@ export class NotesListComponent implements OnInit {
     
   }
 
+  checkActiveNote(oldNoteId: number, newNoteId: number) {
+    if (oldNoteId && (oldNoteId !== newNoteId)) {
+      let oldNote = document.getElementsByClassName('note-' + oldNoteId)[0];
+      oldNote.classList.remove('activeNote');
+    }
+    let newNote = document.getElementsByClassName('note-' + newNoteId)[0];
+    newNote.classList.add('activeNote');
+  }
+
   clickNote(note: Note) {
+    this.checkActiveNote(this.activeNoteId, note.id);
+    this.activeNoteId = note.id;
     this.noteService.setNote(note);
+  }
+
+  populateNotesItemsWithClasses() {
+    let notesItems: HTMLCollectionOf<Element> = document.getElementsByClassName('notes-list-item');
+    this.notes.map((note, i) => {
+      let className: string = 'folder-' + note.id;
+    });
   }
 
   renderNotes(notes: Note[]) {

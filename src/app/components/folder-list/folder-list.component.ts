@@ -32,9 +32,6 @@ export class FolderListComponent implements OnInit {
       },
       error => {
         console.log(error);
-      },
-      () => {
-        this.populateFolderItemsWithClasses();
       });
   }
 
@@ -57,12 +54,5 @@ export class FolderListComponent implements OnInit {
     if (this.activeFolderId !== folderId) {
       this.noteService.clearNote();
     }
-  }
-
-  populateFolderItemsWithClasses() {
-    let folderItems: HTMLCollectionOf<Element> = document.getElementsByClassName('folder-item');
-    this.folders.map((folder, i) => {
-      let className: string = 'folder-' + folder.id;
-    });
   }
 }

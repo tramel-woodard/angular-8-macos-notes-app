@@ -1,6 +1,8 @@
 <ul class="notes-list-container" *ngIf="noteIsFormatted">
-    <li class="notes-list-item" *ngFor="let note of notes" (click)="clickNote(note)">
-        <span>{{note.noteTitle}}</span><br />
-        <span>{{note.noteDescription}}</span>
+    <li class="notes-list-item note-{{note.id}}" *ngFor="let note of notes" (click)="clickNote(note)">
+        <div class="note-frame">
+            <span>{{note.noteTitle}}</span><br />
+            <span>{{note.noteDescription}}</span>
+        </div>
     </li>
 </ul>
