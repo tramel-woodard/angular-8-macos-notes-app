@@ -27,6 +27,8 @@ export class NotesListComponent implements OnInit {
         this.noteService.getNotes(id)
           .subscribe((notes: Note[]) => {
             this.notes = notes;
+            this.activeNoteId = null;
+            console.log('this.notes', this.notes);
             this.renderNotes(this.notes);
           },
           error => {

@@ -14,6 +14,7 @@ export class FolderListComponent implements OnInit {
 
   folders: Folder[];
   activeFolderId: number;
+  foldersAreLoaded: boolean = false;
 
   constructor(
     private folderService: FolderService,
@@ -22,17 +23,6 @@ export class FolderListComponent implements OnInit {
 
   ngOnInit() {
     this.getFolders();
-  }
-
-  getFolders() {
-    this.checkActiveNote(this.activeFolderId);
-    this.folderService.getFolders()
-      .subscribe((folders: Folder[]) => {
-        this.folders = folders;
-      },
-      error => {
-        console.log(error);
-      });
   }
 
   clickFolder(folderId: number) {
@@ -54,5 +44,24 @@ export class FolderListComponent implements OnInit {
     if (this.activeFolderId !== folderId) {
       this.noteService.clearNote();
     }
+  }
+
+  getFolders() {
+    this.checkActiveNote(this.activeFolderId);
+    this.folderService.getFolders()
+      .subscribe((folders: Folder[]) => {
+        this.folders = folders;
+        this.sortFolders(this.folders);
+      },
+      error => {
+        console.log(error.message);
+      },
+      () => {
+        this.foldersAreLoaded = true;
+      });
+  }
+
+  sortFolders(folders: Folder[]) {
+    folders.sort((a, b) => (a.name > b.name) ? 1 : -1);
   }
 }

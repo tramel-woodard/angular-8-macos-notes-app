@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_ADDRESS: 'https://jsonplaceholder.typicode.com'
+  API_ADDRESS: 'http://my-json-server.typicode.com/tramel-woodard/jsonserver'
 };
 
 /*
